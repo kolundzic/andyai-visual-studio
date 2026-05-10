@@ -293,3 +293,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Public Share Links layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.4.0 — Client Review Mode
+
+- Added Client Review Mode layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
