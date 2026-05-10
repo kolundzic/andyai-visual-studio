@@ -120,3 +120,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added  route.
 - Added visual proof SVG card.
 - Added visual proof strip component.
+
+## v1.9.0 — MVP Launch Candidate
+
+- Added  route.
+- Added launch candidate QA script.
+- Added public beta pre-lock checklist.
