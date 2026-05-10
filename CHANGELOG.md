@@ -201,3 +201,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added v2.1.0 → v3.0.0 master documentation.
 - Added route QA and v3.0.0 verifier.
 - Locked the commercial SaaS foundation milestone.
+
+## v3.1.0 — Template Marketplace Structure
+
+- Added marketplace route, template metadata model, and marketplace hero structure.
