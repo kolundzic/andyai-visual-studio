@@ -195,3 +195,9 @@ Beta proof chain:
 Canonical formula:
 
 Template enters → Human edits → TAP prompt saves → Artifact exports → Package downloads → Proof remains.
+
+## v3.0.0 Commercial SaaS Foundation Lock
+
+AndyAI Visual Studio is now organized as a commercial SaaS foundation with public demo readiness, deploy path, auth-ready workspace, Supabase data model, export/package workflow, pricing architecture, plan gates, profile layer, and beta feedback signal capture.
+
+Next strategic line: v3.x Template Marketplace and Visual Production Engine.

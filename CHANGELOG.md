@@ -194,3 +194,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added beta feedback component.
 - Added Supabase feedback table migration.
 - Added feedback signal documentation.
+
+## v3.0.0 — Commercial SaaS Foundation Lock
+
+- Added commercial foundation route and badge.
+- Added v2.1.0 → v3.0.0 master documentation.
+- Added route QA and v3.0.0 verifier.
+- Locked the commercial SaaS foundation milestone.
