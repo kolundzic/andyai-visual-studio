@@ -209,3 +209,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.2.0 — Template Categories + Tags + Search v2
 
 - Added marketplace categories, tags, and Search v2 discovery rules.
+
+## v3.3.0 — Premium Template Metadata
+
+- Added premium template metadata model, route, and starter Supabase table.
