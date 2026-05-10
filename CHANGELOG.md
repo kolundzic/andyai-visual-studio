@@ -248,3 +248,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added customization wizard model.\n- Added  route.\n- Added customization principles and step model.
+
+
+- Added SVG artifact generator route.\n- Added vector artifact contract.\n- Added editable output rules.
