@@ -109,3 +109,8 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 - Added demo smoke QA script.
 - Added route coverage checks for public MVP demo paths.
+
+## v1.7.0 — Mobile Responsive Polish
+
+- Added  route.
+- Added mobile-first QA notes for public beta readiness.
