@@ -134,3 +134,28 @@ npm run route:qa
 
 `public/andyai-visual-studio-mvp-badge.svg`
 
+
+## v1.1.0 — Vercel Production Deploy Pack
+
+AndyAI Visual Studio now includes a production deployment readiness layer for Vercel.
+
+### Deployment readiness additions
+
+- `vercel.json` for Next.js deployment configuration.
+- `/production-smoke` route for public proof after deployment.
+- Vercel environment checklist.
+- Deploy proof guide.
+- Production smoke script.
+- v1.1.0 verifier.
+
+### Local verification
+
+```bash
+npm run verify:v1.1.0
+```
+
+### Production proof route
+
+```text
+/production-smoke
+```

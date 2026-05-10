@@ -72,3 +72,11 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added route QA script and v1.0.0 verifier.
 - Added public demo readiness, route QA, and Vercel deploy documentation.
 - Added README launch pass block.
+
+## v1.1.0 — Vercel Production Deploy Pack
+
+- Added `vercel.json` for explicit Next.js deployment configuration.
+- Added `/production-smoke` route for public deployment proof.
+- Added Vercel environment checklist, deploy runbook, and deploy proof guide.
+- Added production smoke and v1.1.0 verification scripts.
+- Added public deployment readiness docs after the v1.0.0 MVP lock.

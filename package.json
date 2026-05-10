@@ -10,7 +10,9 @@
     "verify:v0.3.0": "bash scripts/verify-v0.3.0.sh",
     "verify:v0.4.0": "bash scripts/verify-v0.4.0.sh",
     "verify:v1.0.0": "bash scripts/verify-v1.0.0.sh",
-    "route:qa": "bash scripts/route-qa-v1.0.0.sh"
+    "route:qa": "bash scripts/route-qa-v1.0.0.sh",
+    "verify:v1.1.0": "bash scripts/verify-v1.1.0.sh",
+    "smoke:v1.1.0": "bash scripts/production-smoke-v1.1.0.sh"
   },
   "dependencies": {
     "@types/node": "^20.11.30",
