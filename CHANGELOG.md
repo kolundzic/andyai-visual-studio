@@ -257,3 +257,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added README visual pack route.\n- Added README export structure.\n- Added project proof presentation model.
+
+
+- Added diagram pack generator route.\n- Added five-diagram canonical output model.\n- Added diagram generation documentation.
