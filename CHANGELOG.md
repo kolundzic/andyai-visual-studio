@@ -80,3 +80,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Vercel environment checklist, deploy runbook, and deploy proof guide.
 - Added production smoke and v1.1.0 verification scripts.
 - Added public deployment readiness docs after the v1.0.0 MVP lock.
+
+## v1.2.0 — Public Demo Content Expansion
+
+- Added  route.
+- Added structured public demo content scenarios.
+- Added founder, agency, and educator demo flows.
