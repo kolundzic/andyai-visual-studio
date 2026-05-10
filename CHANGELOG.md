@@ -266,3 +266,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added evidence metadata route.\n- Added artifact evidence fields.\n- Added Supabase starter migration for artifact evidence.
+
+
+- Added artifact QA inspector route.\n- Added artifact QA checklist.\n- Added artifact QA script.
