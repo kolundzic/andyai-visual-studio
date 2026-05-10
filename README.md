@@ -89,3 +89,23 @@ npm run build
 **AndyAI — Canonical platform, system direction, and brand layer**  
 **Founder:** AndyAI Andrija (Andy) Kolundzic  
 **CEO and Owner, Japan IT Business, Tokyo, Japan**
+
+---
+
+## v0.4.0 Supabase Product Data Layer
+
+AndyAI Visual Studio now includes its first product data foundation:
+
+- `avs_templates`
+- `avs_projects`
+- `avs_exports`
+- starter Supabase migration
+- starter seed data
+- RLS documentation
+- TypeScript data contracts
+- local mock adapter
+- `/data-preview` route
+
+Canonical rule:
+
+> Template is reusable. Project is personal. Export is evidence/output.

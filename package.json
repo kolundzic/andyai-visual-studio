@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "verify:v0.3.0": "bash scripts/verify-v0.3.0.sh"
+    "verify:v0.3.0": "bash scripts/verify-v0.3.0.sh",
+    "verify:v0.4.0": "bash scripts/verify-v0.4.0.sh"
   },
   "dependencies": {
     "@types/node": "^20.11.30",
