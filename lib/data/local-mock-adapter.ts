@@ -6,10 +6,12 @@ import type {
   AvsProject,
   AvsProjectCreateInput,
   AvsProjectUpdateInput,
+  AvsPromptExportCreateInput,
   AvsTemplate
 } from "./types";
 
 const localProjects: AvsProject[] = [...avsProjects];
+const localExports: AvsExport[] = [];
 
 function nowIso() {
   return new Date().toISOString();
@@ -17,6 +19,39 @@ function nowIso() {
 
 function makeProjectId() {
   return `local-project-${Date.now()}`;
+}
+
+function makeExportId() {
+  return `local-export-${Date.now()}`;
+}
+
+function buildExportPayload(project: AvsProject | null, input: AvsPromptExportCreateInput) {
+  if (input.exportPayload) {
+    return input.exportPayload;
+  }
+
+  if (input.exportType === "json") {
+    return {
+      type: "json",
+      projectId: input.projectId,
+      title: project?.title ?? "Untitled Project",
+      prompt: input.promptSnapshot,
+      status: project?.status ?? "draft",
+      exportedAt: nowIso()
+    };
+  }
+
+  if (input.exportType === "markdown") {
+    return {
+      type: "markdown",
+      content: `# ${project?.title ?? "AndyAI Visual Project"}\n\n## TAP Prompt\n\n${input.promptSnapshot}\n`
+    };
+  }
+
+  return {
+    type: "prompt",
+    content: input.promptSnapshot
+  };
 }
 
 export function createLocalMockAdapter(reason = "Local mock adapter active"): AvsProductDataAdapter {
@@ -94,8 +129,47 @@ export function createLocalMockAdapter(reason = "Local mock adapter active"): Av
       return updated;
     },
 
-    async listExports(): Promise<AvsExport[]> {
-      return [];
+    async createPromptExport(input: AvsPromptExportCreateInput): Promise<AvsExport> {
+      const project = localProjects.find((item) => item.id === input.projectId) ?? null;
+      const timestamp = nowIso();
+      const exportRecord: AvsExport = {
+        id: makeExportId(),
+        ownerId: input.ownerId ?? project?.ownerId ?? "local-user",
+        projectId: input.projectId,
+        exportType: input.exportType,
+        label: input.label ?? `${input.exportType.toUpperCase()} export`,
+        promptSnapshot: input.promptSnapshot,
+        exportPayload: buildExportPayload(project, input),
+        source: "local-mock",
+        createdAt: timestamp
+      };
+
+      localExports.unshift(exportRecord);
+
+      if (project) {
+        await this.updateProject({
+          projectId: project.id,
+          status: "exported",
+          outputSnapshot: {
+            ...project.outputSnapshot,
+            lastExportId: exportRecord.id,
+            lastExportType: exportRecord.exportType,
+            lastExportedAt: timestamp
+          }
+        });
+      }
+
+      return exportRecord;
+    },
+
+    async listProjectExports(projectId: string, ownerId = "local-user"): Promise<AvsExport[]> {
+      return localExports
+        .filter((item) => item.projectId === projectId && (item.ownerId === ownerId || ownerId === "local-user"))
+        .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    },
+
+    async listExports(projectId: string, ownerId = "local-user"): Promise<AvsExport[]> {
+      return this.listProjectExports(projectId, ownerId);
     }
   };
 }

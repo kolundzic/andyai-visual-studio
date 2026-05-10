@@ -28,12 +28,17 @@ export type AvsProject = {
   updatedAt: string;
 };
 
+export type AvsExportType = "prompt" | "markdown" | "json" | "html";
+
 export type AvsExport = {
   id: string;
   ownerId: string;
   projectId: string;
-  exportType: "prompt" | "markdown" | "json" | "svg" | "html";
+  exportType: AvsExportType;
+  label: string;
+  promptSnapshot: string;
   exportPayload: Record<string, unknown>;
+  source: "local-mock" | "supabase";
   createdAt: string;
 };
 
@@ -55,6 +60,15 @@ export type AvsProjectUpdateInput = {
   outputSnapshot?: Record<string, unknown>;
 };
 
+export type AvsPromptExportCreateInput = {
+  ownerId?: string;
+  projectId: string;
+  exportType: AvsExportType;
+  label?: string;
+  promptSnapshot: string;
+  exportPayload?: Record<string, unknown>;
+};
+
 export type AvsDataSourceState = {
   mode: "local-mock" | "supabase";
   fallback: boolean;
@@ -69,5 +83,7 @@ export type AvsProductDataAdapter = {
   getProjectById(projectId: string, ownerId?: string): Promise<AvsProject | null>;
   createProjectFromTemplate(input: AvsProjectCreateInput): Promise<AvsProject>;
   updateProject(input: AvsProjectUpdateInput): Promise<AvsProject | null>;
+  createPromptExport(input: AvsPromptExportCreateInput): Promise<AvsExport>;
+  listProjectExports(projectId: string, ownerId?: string): Promise<AvsExport[]>;
   listExports(projectId: string, ownerId?: string): Promise<AvsExport[]>;
 };

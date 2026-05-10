@@ -213,3 +213,24 @@ pre {
     padding: 28px;
   }
 }
+
+.avs-inline-form {
+  display: inline-flex;
+}
+
+.avs-success-strip {
+  border: 1px solid #b7e4c7;
+  background: #effaf2;
+  color: #135b2f;
+  border-radius: 18px;
+  padding: 12px 14px;
+  font-weight: 800;
+}
+
+.avs-empty-state {
+  border: 1px dashed var(--avs-border);
+  border-radius: 22px;
+  padding: 22px;
+  color: var(--avs-muted);
+  background: #fffaf2;
+}

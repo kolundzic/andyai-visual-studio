@@ -39,3 +39,14 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added local mock and Supabase adapter methods for project creation.
 - Added project prompt snapshot migration.
 - Added v0.7.0 docs and verifier.
+
+## v0.8.0 — Prompt Export & Copy Workflow
+
+- Added copy-to-clipboard prompt workflow.
+- Added prompt export server action.
+- Added project export panel and export history component.
+- Added `/exports` and `/projects/[projectId]/exports` routes.
+- Added local mock and Supabase export creation adapter methods.
+- Added prompt snapshot migration for `avs_exports`.
+- Added export visibility to `/data-preview`.
+- Added v0.8.0 docs and verifier.

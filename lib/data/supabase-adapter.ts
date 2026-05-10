@@ -6,6 +6,7 @@ import type {
   AvsProject,
   AvsProjectCreateInput,
   AvsProjectUpdateInput,
+  AvsPromptExportCreateInput,
   AvsTemplate
 } from "./types";
 
@@ -36,6 +37,18 @@ type ProjectRow = {
   output_snapshot: Record<string, unknown> | null;
   created_at: string | null;
   updated_at: string | null;
+};
+
+type ExportRow = {
+  id: string;
+  owner_id: string | null;
+  project_id: string | null;
+  export_type: string | null;
+  label: string | null;
+  prompt_snapshot: string | null;
+  export_payload: Record<string, unknown> | null;
+  source: string | null;
+  created_at: string | null;
 };
 
 function mapTemplate(row: TemplateRow): AvsTemplate {
@@ -69,6 +82,50 @@ function mapProject(row: ProjectRow): AvsProject {
     outputSnapshot: row.output_snapshot ?? {},
     createdAt: row.created_at ?? new Date().toISOString(),
     updatedAt: row.updated_at ?? new Date().toISOString()
+  };
+}
+
+function mapExport(row: ExportRow): AvsExport {
+  const exportType = row.export_type === "markdown" || row.export_type === "json" || row.export_type === "html" ? row.export_type : "prompt";
+  return {
+    id: row.id,
+    ownerId: row.owner_id ?? "unknown",
+    projectId: row.project_id ?? "unknown",
+    exportType,
+    label: row.label ?? `${exportType.toUpperCase()} export`,
+    promptSnapshot: row.prompt_snapshot ?? "",
+    exportPayload: row.export_payload ?? {},
+    source: row.source === "local-mock" ? "local-mock" : "supabase",
+    createdAt: row.created_at ?? new Date().toISOString()
+  };
+}
+
+function buildExportPayload(project: AvsProject | null, input: AvsPromptExportCreateInput) {
+  if (input.exportPayload) {
+    return input.exportPayload;
+  }
+
+  if (input.exportType === "json") {
+    return {
+      type: "json",
+      projectId: input.projectId,
+      title: project?.title ?? "Untitled Project",
+      prompt: input.promptSnapshot,
+      status: project?.status ?? "draft",
+      exportedAt: new Date().toISOString()
+    };
+  }
+
+  if (input.exportType === "markdown") {
+    return {
+      type: "markdown",
+      content: `# ${project?.title ?? "AndyAI Visual Project"}\n\n## TAP Prompt\n\n${input.promptSnapshot}\n`
+    };
+  }
+
+  return {
+    type: "prompt",
+    content: input.promptSnapshot
   };
 }
 
@@ -175,7 +232,7 @@ export function createSupabaseAdapter(): AvsProductDataAdapter {
         status: "draft",
         input_snapshot: input.inputSnapshot ?? {},
         output_snapshot: {
-          preview: "Project saved. Export and generation steps are prepared for the next release."
+          preview: "Project saved. Export and generation steps are ready."
         }
       };
 
@@ -225,7 +282,49 @@ export function createSupabaseAdapter(): AvsProductDataAdapter {
       return mapProject(data as ProjectRow);
     },
 
-    async listExports(projectId: string, ownerId?: string): Promise<AvsExport[]> {
+    async createPromptExport(input: AvsPromptExportCreateInput): Promise<AvsExport> {
+      const user = await getCurrentSupabaseUser();
+
+      if (!user?.id) {
+        throw new Error("LOGIN_REQUIRED");
+      }
+
+      const project = await this.getProjectById(input.projectId, user.id);
+      const supabase = await createServerSupabaseClient();
+      const payload = {
+        owner_id: user.id,
+        project_id: input.projectId,
+        export_type: input.exportType,
+        label: input.label ?? `${input.exportType.toUpperCase()} export`,
+        prompt_snapshot: input.promptSnapshot,
+        export_payload: buildExportPayload(project, input),
+        source: "supabase"
+      };
+
+      const { data, error } = await supabase
+        .from("avs_exports")
+        .insert(payload)
+        .select("*")
+        .single();
+
+      if (error || !data) {
+        throw new Error(error?.message ?? "Unable to create prompt export");
+      }
+
+      await this.updateProject({
+        projectId: input.projectId,
+        status: "exported",
+        outputSnapshot: {
+          ...(project?.outputSnapshot ?? {}),
+          lastExportType: input.exportType,
+          lastExportedAt: new Date().toISOString()
+        }
+      });
+
+      return mapExport(data as ExportRow);
+    },
+
+    async listProjectExports(projectId: string, ownerId?: string): Promise<AvsExport[]> {
       const user = await getCurrentSupabaseUser();
       const effectiveOwnerId = ownerId ?? user?.id;
 
@@ -245,14 +344,11 @@ export function createSupabaseAdapter(): AvsProductDataAdapter {
         throw new Error(error?.message ?? "Unable to load exports");
       }
 
-      return data.map((row: any) => ({
-        id: row.id,
-        ownerId: row.owner_id,
-        projectId: row.project_id,
-        exportType: row.export_type,
-        exportPayload: row.export_payload ?? {},
-        createdAt: row.created_at
-      }));
+      return (data as ExportRow[]).map(mapExport);
+    },
+
+    async listExports(projectId: string, ownerId?: string): Promise<AvsExport[]> {
+      return this.listProjectExports(projectId, ownerId);
     }
   };
 }
