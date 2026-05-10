@@ -180,3 +180,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added plan gate card component.
 - Added usage limits route.
 - Added plan gate documentation.
+
+## v2.8.0 — Account Settings + User Profile
+
+- Added account settings route.
+- Added account profile preference model.
+- Added Supabase profile table migration.
+- Added user profile docs.
