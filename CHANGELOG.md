@@ -339,3 +339,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Agency Visual Studio Lock layer for AndyAI Visual Studio.
 - Added route, component, library contract, documentation, and verification coverage.
 - Preserved TAP-TAP sequential release discipline with local-first proof.
+
+## v6.1.0 — Visual Canon Sync Layer
+
+- Added Visual Canon sync route, component, lib, and documentation.
