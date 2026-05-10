@@ -233,3 +233,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.8.0 — Admin Template Publishing Flow
 
 - Added admin publishing workflow, publish log migration, and governance route.
+
+## v3.9.0 — Marketplace QA + Governance
+
+- Added marketplace governance route and QA script for the v4.0 lock.
