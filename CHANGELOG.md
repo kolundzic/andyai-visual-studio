@@ -263,3 +263,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added artifact bundle route.\n- Added future ZIP manifest.\n- Added handoff package structure.
+
+
+- Added evidence metadata route.\n- Added artifact evidence fields.\n- Added Supabase starter migration for artifact evidence.
