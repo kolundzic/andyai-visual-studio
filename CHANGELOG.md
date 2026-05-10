@@ -355,3 +355,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.4.0 — Knowledge Factory Visual Pack Export
 
 - Added Knowledge Factory visual pack export route, component, lib, and docs.
+
+## v6.5.0 — Director Project Brief Export
+
+- Added Director brief export route, component, lib, and docs.
