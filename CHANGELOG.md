@@ -92,3 +92,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added  route.
 - Added navigation proof component for public MVP QA.
 - Documented core user path hardening.
+
+## v1.4.0 — Template Catalog Expansion Pack
+
+- Added beta-oriented template catalog structure.
+- Added  route.
+- Added template metadata for categories, audiences, formats, and beta readiness.
