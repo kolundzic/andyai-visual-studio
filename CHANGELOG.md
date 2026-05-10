@@ -407,3 +407,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Case Study Preview Layer layer.
 - Added public route, component, data/model helper, docs, and release alignment.
 - Included in the v7.2.0 → v8.0.0 Public Showcase Polish and Product Demo Lock master sequence.
+
+## v7.6.0 — Persona Demo Paths
+
+- Added Persona Demo Paths layer.
+- Added public route, component, data/model helper, docs, and release alignment.
+- Included in the v7.2.0 → v8.0.0 Public Showcase Polish and Product Demo Lock master sequence.
