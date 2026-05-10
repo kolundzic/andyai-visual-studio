@@ -347,3 +347,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.2.0 — Visual Factory Export Bridge
 
 - Added Visual Factory bridge route, component, lib, and documentation.
+
+## v6.3.0 — Animator Studio Handoff Spec
+
+- Added Animator Studio handoff route, component, lib, and docs.
