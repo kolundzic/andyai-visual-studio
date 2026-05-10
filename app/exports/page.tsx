@@ -16,17 +16,19 @@ export default async function ExportsPage() {
     })
   );
 
+  const source = getProductDataAdapter().getSourceState();
   const exportCount = exportGroups.reduce((total, group) => total + group.exports.length, 0);
 
   return (
     <main className="avs-page-shell">
       <section className="avs-hero-small">
         <div className="avs-section-kicker">Exports</div>
-        <h1>Prompt export history</h1>
-        <p>Global export overview across saved projects. This becomes the future download and provider handoff center.</p>
+        <h1>Prompt export and package center</h1>
+        <p>Global export overview across saved projects, now with downloadable package routes for each project.</p>
         <div className="avs-inline-proof">
           <span>Projects: {projects.length}</span>
           <span>Exports: {exportCount}</span>
+          <span>Mode: {source.mode}</span>
         </div>
       </section>
 
@@ -39,6 +41,7 @@ export default async function ExportsPage() {
             <div className="avs-actions">
               <a className="avs-button-primary" href={`/projects/${project.id}`}>Open project</a>
               <a className="avs-button-secondary" href={`/projects/${project.id}/exports`}>View exports</a>
+              <a className="avs-button-secondary" href={`/projects/${project.id}/package`}>Package preview</a>
             </div>
           </article>
         ))}

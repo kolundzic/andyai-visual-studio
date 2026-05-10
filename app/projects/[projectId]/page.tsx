@@ -1,14 +1,10 @@
 import { notFound } from "next/navigation";
 import { PromptExportPanel } from "@/components/PromptExportPanel";
+import { ProjectArtifactPackagePreview } from "@/components/ProjectArtifactPackagePreview";
 import { ProjectExportHistory } from "@/components/ProjectExportHistory";
 import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
-type ProjectDetailPageProps = {
-  params: Promise<{ projectId: string }> | { projectId: string };
-  searchParams?: Promise<Record<string, string | string[] | undefined>> | Record<string, string | string[] | undefined>;
-};
-
-export default async function ProjectDetailPage({ params, searchParams }: ProjectDetailPageProps) {
+export default async function ProjectDetailPage({ params, searchParams }: { params: Promise<{ projectId: string }> | { projectId: string }; searchParams?: Promise<Record<string, string | string[] | undefined>> | Record<string, string | string[] | undefined> }) {
   const resolvedParams = await Promise.resolve(params);
   const resolvedSearchParams = await Promise.resolve(searchParams ?? {});
 
@@ -48,11 +44,13 @@ export default async function ProjectDetailPage({ params, searchParams }: Projec
         <div className="avs-actions">
           <a className="avs-button-primary" href={`/tap-editor?templateId=${project.templateId ?? ""}`}>Create another from template</a>
           <a className="avs-button-secondary" href="/projects">Back to projects</a>
-          <a className="avs-button-secondary" href={`/projects/${project.id}/exports`}>Export preview</a>
+          <a className="avs-button-secondary" href={`/projects/${project.id}/exports`}>Export history</a>
+          <a className="avs-button-secondary" href={`/projects/${project.id}/package`}>Package preview</a>
         </div>
       </section>
 
       <PromptExportPanel project={project} />
+      <ProjectArtifactPackagePreview project={project} exports={exports} />
       <ProjectExportHistory exports={exports} />
 
       <section className="avs-grid avs-grid-2">
@@ -75,9 +73,9 @@ export default async function ProjectDetailPage({ params, searchParams }: Projec
         </article>
 
         <article className="avs-card">
-          <div className="avs-card-topline">Next action</div>
-          <h3>Copy, export, then generate</h3>
-          <p>The v0.8.0 workflow prepares the project for real prompt handoff. The next layer can add visual generation providers and export downloads.</p>
+          <div className="avs-card-topline">Download Layer</div>
+          <h3>Export, download, and preserve</h3>
+          <p>The v0.9.0 layer turns a saved project into a reusable artifact package with TXT, Markdown, and JSON downloads.</p>
         </article>
       </section>
     </main>

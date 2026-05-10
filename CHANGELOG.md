@@ -50,3 +50,14 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added prompt snapshot migration for `avs_exports`.
 - Added export visibility to `/data-preview`.
 - Added v0.8.0 docs and verifier.
+
+## v0.9.0 — Export Download & Artifact Package Layer
+
+- Added TXT, Markdown, and JSON download generation for project artifacts.
+- Added export metadata and package manifest builder.
+- Added project artifact package preview component.
+- Added `/projects/[projectId]/package` route.
+- Added download buttons to project export preview.
+- Added package preview links from project and exports pages.
+- Added Supabase migration for download format and artifact metadata.
+- Added v0.9.0 docs and verifier.
