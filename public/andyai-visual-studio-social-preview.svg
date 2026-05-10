@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" rx="48" fill="#0f172a"/>
+  <circle cx="1030" cy="120" r="150" fill="#f59e0b" opacity="0.22"/>
+  <circle cx="170" cy="520" r="190" fill="#38bdf8" opacity="0.18"/>
+  <text x="90" y="190" fill="#ffffff" font-family="Arial, sans-serif" font-size="58" font-weight="800">AndyAI Visual Studio</text>
+  <text x="90" y="270" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="34">Public Showcase • Product Demo • Visual Factory</text>
+  <rect x="90" y="350" width="500" height="82" rx="24" fill="#ffffff"/>
+  <text x="125" y="404" fill="#0f172a" font-family="Arial, sans-serif" font-size="32" font-weight="700">v8.0 Product Demo Lock</text>
+</svg>
