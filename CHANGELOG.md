@@ -86,3 +86,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added  route.
 - Added structured public demo content scenarios.
 - Added founder, agency, and educator demo flows.
+
+## v1.3.0 — UX Polish & Navigation Hardening
+
+- Added  route.
+- Added navigation proof component for public MVP QA.
+- Documented core user path hardening.
