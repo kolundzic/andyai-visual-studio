@@ -245,3 +245,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v4.1.0 — AI Prompt Assistant Shell
 
 - Added AI prompt assistant shell.\n- Added prompt quality checklist.\n- Added  route.
+
+
+- Added customization wizard model.\n- Added  route.\n- Added customization principles and step model.
