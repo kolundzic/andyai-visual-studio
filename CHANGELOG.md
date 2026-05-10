@@ -213,3 +213,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.3.0 — Premium Template Metadata
 
 - Added premium template metadata model, route, and starter Supabase table.
+
+## v3.4.0 — Visual Canon Template Packs
+
+- Added Visual Canon pack model and route for grouped marketplace templates.
