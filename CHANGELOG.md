@@ -187,3 +187,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added account profile preference model.
 - Added Supabase profile table migration.
 - Added user profile docs.
+
+## v2.9.0 — Beta User Feedback Layer
+
+- Added beta feedback route.
+- Added beta feedback component.
+- Added Supabase feedback table migration.
+- Added feedback signal documentation.
