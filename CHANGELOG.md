@@ -241,3 +241,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v4.0.0 — Visual Template Marketplace Lock
 
 - Locked the marketplace and visual production engine foundation after v3.1.0 through v3.9.0.
+
+## v4.1.0 — AI Prompt Assistant Shell
+
+- Added AI prompt assistant shell.\n- Added prompt quality checklist.\n- Added  route.
