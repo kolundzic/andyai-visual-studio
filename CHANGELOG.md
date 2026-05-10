@@ -351,3 +351,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.3.0 — Animator Studio Handoff Spec
 
 - Added Animator Studio handoff route, component, lib, and docs.
+
+## v6.4.0 — Knowledge Factory Visual Pack Export
+
+- Added Knowledge Factory visual pack export route, component, lib, and docs.
