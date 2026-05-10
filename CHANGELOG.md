@@ -383,3 +383,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v7.1.0 — Public Showcase Homepage Polish
 
 - Added public showcase polish route, component, library contract, and documentation.
+
+## v7.2.0 — Product Demo Storyline
+
+- Added Product Demo Storyline layer.
+- Added public route, component, data/model helper, docs, and release alignment.
+- Included in the v7.2.0 → v8.0.0 Public Showcase Polish and Product Demo Lock master sequence.
