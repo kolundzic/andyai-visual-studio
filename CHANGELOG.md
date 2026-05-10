@@ -19,3 +19,13 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added adapter switch with safe fallback to local mock data.
 - Wired Gallery, Template Detail, TAP Editor, and Data Preview routes to the data adapter.
 - Added v0.5.0 documentation and verifier.
+
+## v0.6.0 — Supabase Auth & User Project Workspace
+
+- Added login-ready Supabase Auth architecture.
+- Added auth callback and sign-out routes.
+- Added protected dashboard model.
+- Added user-owned projects route and project detail route.
+- Added owner-scoped workspace project adapter.
+- Added starter RLS migration for project and export ownership.
+- Added auth and workspace documentation.

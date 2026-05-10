@@ -516,3 +516,36 @@ p {
     grid-template-columns: 1fr;
   }
 }
+.avs-field {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.avs-field span {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.avs-field input {
+  width: 100%;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  border-radius: 1rem;
+  padding: 0.9rem 1rem;
+  font: inherit;
+}
+
+.avs-warning {
+  color: #92400e;
+  font-weight: 700;
+}
+
+.avs-pill {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

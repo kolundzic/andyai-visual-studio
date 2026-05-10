@@ -10,8 +10,10 @@ export function Nav() {
       <div className="nav-links">
         <Link href="/gallery">Gallery</Link>
         <Link href="/tap-editor">TAP Editor</Link>
+        <Link href="/projects">Projects</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/dashboard">Dashboard</Link>
+        <Link href="/login">Login</Link>
       </div>
     </nav>
   );

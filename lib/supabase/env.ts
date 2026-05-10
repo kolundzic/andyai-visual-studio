@@ -25,3 +25,13 @@ export function getRequestedDataMode(): AvsDataMode {
 export function isSupabaseConfigured(): boolean {
   return getSupabasePublicEnv().configured;
 }
+
+export function getSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  return raw.replace(/\/$/, "");
+}
+
+export function getAuthRedirectPath(): string {
+  const raw = process.env.AVS_AUTH_REDIRECT_PATH ?? "/dashboard";
+  return raw.startsWith("/") ? raw : "/dashboard";
+}
