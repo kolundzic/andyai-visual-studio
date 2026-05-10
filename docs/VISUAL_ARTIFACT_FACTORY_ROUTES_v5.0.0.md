@@ -1,0 +1,11 @@
+
+- `/ai-prompt-assistant`
+- `/template-customization-wizard`
+- `/svg-artifact-generator`
+- `/html-export`
+- `/readme-visual-pack`
+- `/diagram-pack-generator`
+- `/artifact-bundle`
+- `/evidence-metadata`
+- `/artifact-qa-inspector`
+- `/artifact-factory-lock`

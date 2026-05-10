@@ -269,3 +269,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added artifact QA inspector route.\n- Added artifact QA checklist.\n- Added artifact QA script.
+
+
+- Locked the Visual Artifact Factory architecture.\n- Added factory lock route and badge.\n- Added master release documentation and v5 route QA.

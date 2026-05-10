@@ -218,3 +218,5 @@ AndyAI Visual Studio now includes a marketplace-ready visual template layer:
 - final v4.0.0 lock route
 
 **Canonical Formula:** Template enters. Metadata explains. Preview verifies. User saves. Export proves. Marketplace grows.
+
+## v5.0.0 — AndyAI Visual Artifact Factory Lock\n\nAndyAI Visual Studio now includes the Visual Artifact Factory architecture: prompt assistant, template wizard, SVG/HTML/README/diagram export models, artifact bundle structure, evidence metadata, and QA inspection before handoff.
