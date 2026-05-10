@@ -155,3 +155,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added WorkspaceDashboardV2 component.
 - Added /workspace-v2 route.
 - Added dashboard v2 documentation.
+
+## v2.4.0 — Project Lifecycle Management
+
+- Added project lifecycle model.
+- Added project lifecycle route.
+- Added lifecycle docs for beta-ready project management.
