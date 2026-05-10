@@ -300,3 +300,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Client Review Mode layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.5.0 — Approval Gate for Visual Artifacts
+
+- Added Approval Gate for Visual Artifacts layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
