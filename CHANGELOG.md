@@ -272,3 +272,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Locked the Visual Artifact Factory architecture.\n- Added factory lock route and badge.\n- Added master release documentation and v5 route QA.
+
+
+## v5.1.0 — Client Workspace Model
+
+- Added Client Workspace Model layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
