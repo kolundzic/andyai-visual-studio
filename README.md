@@ -201,3 +201,20 @@ Template enters → Human edits → TAP prompt saves → Artifact exports → Pa
 AndyAI Visual Studio is now organized as a commercial SaaS foundation with public demo readiness, deploy path, auth-ready workspace, Supabase data model, export/package workflow, pricing architecture, plan gates, profile layer, and beta feedback signal capture.
 
 Next strategic line: v3.x Template Marketplace and Visual Production Engine.
+
+## 🟢 v4.0.0 Visual Template Marketplace Lock
+
+AndyAI Visual Studio now includes a marketplace-ready visual template layer:
+
+- marketplace route
+- category/tag search model
+- premium metadata
+- Visual Canon packs
+- prompt-to-template generator spec
+- preview renderer
+- rating/favorite model
+- admin publishing flow
+- marketplace QA and governance
+- final v4.0.0 lock route
+
+**Canonical Formula:** Template enters. Metadata explains. Preview verifies. User saves. Export proves. Marketplace grows.

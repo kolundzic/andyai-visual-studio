@@ -237,3 +237,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.9.0 — Marketplace QA + Governance
 
 - Added marketplace governance route and QA script for the v4.0 lock.
+
+## v4.0.0 — Visual Template Marketplace Lock
+
+- Locked the marketplace and visual production engine foundation after v3.1.0 through v3.9.0.
