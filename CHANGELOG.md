@@ -104,3 +104,8 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added  route.
 - Added public launch positioning to README.
 - Added partner and pilot audience documentation.
+
+## v1.6.0 — Demo QA + Smoke Test Automation
+
+- Added demo smoke QA script.
+- Added route coverage checks for public MVP demo paths.
