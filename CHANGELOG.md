@@ -379,3 +379,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v7.0.0 — AndyAI Visual Ecosystem Lock
 
 - Locked the ecosystem integration layer for AndyAI Visual Studio.
+
+## v7.1.0 — Public Showcase Homepage Polish
+
+- Added public showcase polish route, component, library contract, and documentation.
