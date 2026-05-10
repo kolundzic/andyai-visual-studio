@@ -279,3 +279,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Client Workspace Model layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.2.0 — Team Project Sharing
+
+- Added Team Project Sharing layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
