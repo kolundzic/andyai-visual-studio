@@ -126,3 +126,11 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added  route.
 - Added launch candidate QA script.
 - Added public beta pre-lock checklist.
+
+## v2.0.0 — Public SaaS Beta Lock
+
+- Added  Public SaaS Beta Lock route.
+- Added beta lock badge component.
+- Added full master sequence documentation for v1.2.0 → v2.0.0.
+- Added v2.0.0 route QA and verifier scripts.
+- Locked the public beta foundation after the v1.x stabilization series.

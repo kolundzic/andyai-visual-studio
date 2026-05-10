@@ -175,3 +175,23 @@ Primary early audiences:
 Core public promise:
 
 Template enters → human edits → TAP prompt is saved → artifact is exported → proof remains.
+
+## v2.0.0 Public SaaS Beta Lock
+
+AndyAI Visual Studio is now locked as a public SaaS beta foundation.
+
+Beta proof chain:
+
+- public product story
+- demo walkthrough
+- public demo scenarios
+- template library
+- partner page
+- mobile preview
+- visual proof showcase
+- launch candidate gate
+- beta lock page
+
+Canonical formula:
+
+Template enters → Human edits → TAP prompt saves → Artifact exports → Package downloads → Proof remains.
