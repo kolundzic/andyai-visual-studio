@@ -221,3 +221,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.5.0 — Prompt-to-Template Generator Spec
 
 - Added generator specification for transforming raw prompts into reusable templates.
+
+## v3.6.0 — Template Preview Renderer
+
+- Added template preview renderer route, component, and preview summary model.
