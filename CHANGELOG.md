@@ -148,3 +148,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added auth polish route.
 - Added auth/session UX documentation.
 - Preserved public demo safety while preparing beta workspace behavior.
+
+## v2.3.0 — User Workspace Dashboard v2
+
+- Added workspace metrics module.
+- Added WorkspaceDashboardV2 component.
+- Added /workspace-v2 route.
+- Added dashboard v2 documentation.
