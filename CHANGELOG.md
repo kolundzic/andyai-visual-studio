@@ -343,3 +343,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.1.0 — Visual Canon Sync Layer
 
 - Added Visual Canon sync route, component, lib, and documentation.
+
+## v6.2.0 — Visual Factory Export Bridge
+
+- Added Visual Factory bridge route, component, lib, and documentation.
