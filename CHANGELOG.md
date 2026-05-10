@@ -161,3 +161,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added project lifecycle model.
 - Added project lifecycle route.
 - Added lifecycle docs for beta-ready project management.
+
+## v2.5.0 — Export History + Versioned Artifacts
+
+- Added versioned artifact model.
+- Added versioned exports route.
+- Added Supabase migration for artifact history links.
+- Added export history documentation.
