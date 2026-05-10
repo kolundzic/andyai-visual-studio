@@ -314,3 +314,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Agency Project Templates layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.7.0 — Brand Kit Profiles
+
+- Added Brand Kit Profiles layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
