@@ -286,3 +286,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Team Project Sharing layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.3.0 — Public Share Links
+
+- Added Public Share Links layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
