@@ -205,3 +205,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.1.0 — Template Marketplace Structure
 
 - Added marketplace route, template metadata model, and marketplace hero structure.
+
+## v3.2.0 — Template Categories + Tags + Search v2
+
+- Added marketplace categories, tags, and Search v2 discovery rules.
