@@ -333,3 +333,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Agency Dashboard QA layer for AndyAI Visual Studio.
 - Added route, component, library contract, documentation, and verification coverage.
 - Preserved TAP-TAP sequential release discipline with local-first proof.
+
+## v6.0.0 — Agency Visual Studio Lock
+
+- Added Agency Visual Studio Lock layer for AndyAI Visual Studio.
+- Added route, component, library contract, documentation, and verification coverage.
+- Preserved TAP-TAP sequential release discipline with local-first proof.

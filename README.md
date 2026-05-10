@@ -220,3 +220,17 @@ AndyAI Visual Studio now includes a marketplace-ready visual template layer:
 **Canonical Formula:** Template enters. Metadata explains. Preview verifies. User saves. Export proves. Marketplace grows.
 
 ## v5.0.0 — AndyAI Visual Artifact Factory Lock\n\nAndyAI Visual Studio now includes the Visual Artifact Factory architecture: prompt assistant, template wizard, SVG/HTML/README/diagram export models, artifact bundle structure, evidence metadata, and QA inspection before handoff.
+
+## v6.0.0 — Agency Visual Studio Lock
+
+AndyAI Visual Studio now has the agency/client delivery foundation:
+
+- Client workspaces
+- Team project sharing
+- Public share links
+- Client review mode
+- Approval gates
+- Agency templates
+- Brand kit profiles
+- Client delivery packages
+- Agency QA
