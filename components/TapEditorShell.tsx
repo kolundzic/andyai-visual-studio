@@ -1,37 +1,88 @@
 "use client";
 
-import { templates } from "@/lib/templates";
 import { useMemo, useState } from "react";
+import type { VisualTemplate } from "@/lib/data";
 
-export function TapEditorShell() {
-  const [templateId, setTemplateId] = useState(templates[0]?.id ?? "AVS-001");
-  const [goal, setGoal] = useState("Create a premium product hero visual for AndyAI Visual Studio.");
-  const selected = useMemo(() => templates.find((template) => template.id === templateId) ?? templates[0], [templateId]);
-  const output = `TEMPLATE: ${selected.id} — ${selected.name}\nCATEGORY: ${selected.category}\nGOAL: ${goal}\n\nPROMPT SEED:\n${selected.promptSeed}\n\nTAP STRUCTURE:\n1. Define audience and purpose.\n2. Preserve AndyAI academic sci-fi style.\n3. Add labels, visual hierarchy, and proof-friendly layout.\n4. Export as reusable prompt/workflow.\n5. Verify that output matches the selected template intent.`;
+type TapEditorShellProps = {
+  templates?: VisualTemplate[];
+};
+
+export default function TapEditorShell({ templates = [] }: TapEditorShellProps) {
+  const [selectedTemplateId, setSelectedTemplateId] = useState(templates[0]?.template_id ?? "");
+  const [userIntent, setUserIntent] = useState("Create a premium AndyAI visual artifact for a technical SaaS workflow.");
+
+  const selectedTemplate = useMemo(() => {
+    return templates.find((template) => template.template_id === selectedTemplateId) ?? templates[0] ?? null;
+  }, [selectedTemplateId, templates]);
+
+  const generatedPrompt = useMemo(() => {
+    if (!selectedTemplate) {
+      return "Choose a template to generate an editable prompt package.";
+    }
+
+    return [
+      `TEMPLATE: ${selectedTemplate.template_id} — ${selectedTemplate.title}`,
+      `CATEGORY: ${selectedTemplate.category}`,
+      "",
+      "USER INTENT:",
+      userIntent,
+      "",
+      "BASE PROMPT:",
+      selectedTemplate.prompt,
+      "",
+      "WORKFLOW STEPS:",
+      ...selectedTemplate.workflow_steps.map((step, index) => `${index + 1}. ${step}`),
+      "",
+      "OUTPUT RULES:",
+      "- Use a clean professional AndyAI visual style.",
+      "- Keep labels readable and evidence-friendly.",
+      "- Return a prompt that can be copied into an image/video/diagram generation workflow.",
+    ].join("\n");
+  }, [selectedTemplate, userIntent]);
 
   return (
-    <div className="editor-layout">
-      <div className="editor-panel">
-        <span className="kicker">🤜💥 TAP Editor Skeleton</span>
-        <h2>Turn a template into an editable production prompt.</h2>
-        <p>Select a visual template, describe the goal, and generate a structured prompt/workflow draft ready for future save, export, and generation actions.</p>
-        <label className="small">Template</label>
-        <select value={templateId} onChange={(event) => setTemplateId(event.target.value)}>
-          {templates.map((template) => (
-            <option key={template.id} value={template.id}>{template.id} — {template.name}</option>
-          ))}
-        </select>
-        <br />
-        <br />
-        <label className="small">User goal</label>
-        <textarea value={goal} onChange={(event) => setGoal(event.target.value)} />
+    <section className="avs-section avs-editor-shell">
+      <div>
+        <p className="avs-kicker">TAP Editor</p>
+        <h1>Turn a visual template into an editable prompt package</h1>
+        <p>
+          v0.5.0 wires the editor to the data adapter. It can read from live Supabase templates or safely fall back to local mock data.
+        </p>
       </div>
-      <div className="editor-panel">
-        <span className="kicker">🟢 Prompt Export Preview</span>
-        <h2>Structured output</h2>
-        <p>This is the first editable shell. Later versions wire this to Supabase, accounts, exports, and generation providers.</p>
-        <div className="output-box">{output}</div>
+
+      <div className="avs-editor-grid">
+        <div className="avs-panel">
+          <label className="avs-label" htmlFor="template-select">Template</label>
+          <select
+            className="avs-select"
+            id="template-select"
+            value={selectedTemplateId}
+            onChange={(event) => setSelectedTemplateId(event.target.value)}
+          >
+            {templates.map((template) => (
+              <option key={template.template_id} value={template.template_id}>
+                {template.template_id} — {template.title}
+              </option>
+            ))}
+          </select>
+
+          <label className="avs-label" htmlFor="intent">Intent</label>
+          <textarea
+            className="avs-textarea"
+            id="intent"
+            value={userIntent}
+            onChange={(event) => setUserIntent(event.target.value)}
+          />
+        </div>
+
+        <div className="avs-panel">
+          <div className="avs-panel-header">
+            <p className="avs-kicker">Prompt export preview</p>
+            <strong>{selectedTemplate?.template_id ?? "No template"}</strong>
+          </div>
+          <pre className="avs-code-block">{generatedPrompt}</pre>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

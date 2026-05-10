@@ -1,76 +1,63 @@
-export type AvsTemplateStatus = "draft" | "published" | "archived";
-export type AvsTemplateVisibility = "public" | "private" | "paid";
-export type AvsProjectStatus = "draft" | "ready" | "exported" | "archived";
-export type AvsExportType = "prompt" | "markdown" | "html" | "svg" | "json" | "image_prompt";
-export type AvsExportStatus = "created" | "queued" | "completed" | "failed";
+export type TemplateTier = "free" | "creator" | "pro" | "studio";
+export type TemplateStatus = "draft" | "published" | "archived";
+export type DataMode = "mock" | "supabase";
+export type DataSource = "local-mock" | "supabase" | "supabase-fallback";
 
-export type AvsWorkflow = {
-  steps: string[];
-  outputContract?: string;
-  approvalRequired?: boolean;
-};
-
-export type AvsTemplate = {
+export type VisualTemplate = {
   id: string;
-  templateCode: string;
+  template_id: string;
   slug: string;
   title: string;
   category: string;
-  difficulty: string;
-  status: AvsTemplateStatus;
-  visibility: AvsTemplateVisibility;
   summary: string;
-  promptTemplate: string;
-  workflow: AvsWorkflow;
+  prompt: string;
+  workflow_steps: string[];
   tags: string[];
-  createdAt: string;
-  updatedAt: string;
+  tier: TemplateTier;
+  status: TemplateStatus;
+  created_at?: string;
+  updated_at?: string;
 };
 
-export type AvsProject = {
+export type VisualProject = {
   id: string;
-  ownerId: string;
-  templateId: string | null;
+  user_id: string | null;
+  template_id: string | null;
   title: string;
-  status: AvsProjectStatus;
-  userPrompt: string;
-  generatedPrompt: string;
-  settings: Record<string, unknown>;
-  createdAt: string;
-  updatedAt: string;
+  prompt_input: string;
+  generated_prompt: string;
+  status: string;
+  created_at?: string;
+  updated_at?: string;
 };
 
-export type AvsExport = {
+export type VisualExport = {
   id: string;
-  projectId: string;
-  ownerId: string;
-  exportType: AvsExportType;
-  status: AvsExportStatus;
-  artifactUrl: string | null;
-  metadata: Record<string, unknown>;
-  createdAt: string;
+  project_id: string | null;
+  export_type: string;
+  export_payload: Record<string, unknown>;
+  created_at?: string;
 };
 
-export type ListTemplatesInput = {
-  query?: string;
-  category?: string;
-  tag?: string;
-  includeDrafts?: boolean;
+export type ProductDataAdapter = {
+  listTemplates: () => Promise<VisualTemplate[]>;
+  getTemplate: (templateIdOrSlug: string) => Promise<VisualTemplate | null>;
 };
 
-export type CreateProjectInput = {
-  ownerId: string;
-  templateId?: string | null;
-  title: string;
-  userPrompt: string;
-  generatedPrompt?: string;
-  settings?: Record<string, unknown>;
+export type DataSourceStatus = {
+  requestedMode: DataMode;
+  source: DataSource;
+  supabaseConfigured: boolean;
+  fallbackUsed: boolean;
+  message: string;
 };
 
-export type CreateExportInput = {
-  ownerId: string;
-  projectId: string;
-  exportType: AvsExportType;
-  artifactUrl?: string | null;
-  metadata?: Record<string, unknown>;
+export type TemplatesResult = {
+  templates: VisualTemplate[];
+  status: DataSourceStatus;
+};
+
+export type TemplateResult = {
+  template: VisualTemplate | null;
+  status: DataSourceStatus;
 };

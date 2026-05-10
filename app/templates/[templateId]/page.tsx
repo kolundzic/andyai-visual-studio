@@ -1,58 +1,59 @@
 import Link from "next/link";
-import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
-import { getTemplateById, templates } from "@/lib/templates";
+import { getTemplateWithSource } from "@/lib/data";
 
-export function generateStaticParams() {
-  return templates.map((template) => ({ templateId: template.id }));
-}
+type TemplateDetailPageProps = {
+  params: {
+    templateId: string;
+  };
+};
 
-export default async function TemplateDetailPage({ params }: { params: Promise<{ templateId: string }> }) {
-  const { templateId } = await params;
-  const template = getTemplateById(templateId);
+export default async function TemplateDetailPage({ params }: TemplateDetailPageProps) {
+  const { template, status } = await getTemplateWithSource(params.templateId);
 
   if (!template) {
     return (
-      <main>
-        <Nav />
-        <section className="section shell">
-          <span className="kicker">Template not found</span>
-          <h1>Unknown template ID.</h1>
-          <p>Return to the gallery and choose one of the available seed templates.</p>
-          <Link className="primary" href="/gallery">Back to Gallery</Link>
+      <main className="avs-page">
+        <section className="avs-hero compact">
+          <p className="avs-kicker">Template not found</p>
+          <h1>No matching template</h1>
+          <p>The requested template does not exist in the current data source.</p>
+          <Link className="avs-button" href="/gallery">Back to gallery</Link>
         </section>
-        <Footer />
       </main>
     );
   }
 
   return (
-    <main>
-      <Nav />
-      <section className="section shell">
-        <span className="kicker">{template.id} · {template.category}</span>
-        <div className="hero">
-          <div className="hero-card">
-            <h1>{template.name}</h1>
-            <p className="hero-text">{template.summary}</p>
-            <div className="cta-row">
-              <Link className="primary" href={`/tap-editor?template=${template.id}`}>Open in TAP Editor</Link>
-              <Link className="secondary" href="/gallery">Back to Gallery</Link>
-            </div>
-          </div>
-          <div className="panel">
-            <div className="template-preview">{template.id}</div>
-            <span className="status ok">{template.level}</span>
-            <h3>Use case</h3>
-            <p>{template.useCase}</p>
-          </div>
+    <main className="avs-page">
+      <section className="avs-hero compact">
+        <p className="avs-kicker">{template.template_id} · {template.category}</p>
+        <h1>{template.title}</h1>
+        <p>{template.summary}</p>
+        <div className="avs-status-card">
+          <strong>Data source:</strong> {status.source} · <strong>Fallback:</strong> {status.fallbackUsed ? "yes" : "no"}
         </div>
-        <div className="card">
-          <span className="kicker">Prompt seed</span>
-          <p>{template.promptSeed}</p>
+        <div className="avs-button-row">
+          <Link className="avs-button" href={`/tap-editor?template=${template.template_id}`}>Open in TAP Editor</Link>
+          <Link className="avs-button secondary" href="/gallery">Back to gallery</Link>
         </div>
       </section>
-      <Footer />
+
+      <section className="avs-section">
+        <h2>Base prompt</h2>
+        <pre className="avs-code-block">{template.prompt}</pre>
+      </section>
+
+      <section className="avs-section">
+        <h2>Workflow steps</h2>
+        <div className="avs-card-grid small">
+          {template.workflow_steps.map((step, index) => (
+            <article className="avs-card" key={step}>
+              <div className="avs-card-meta">Step {index + 1}</div>
+              <p>{step}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

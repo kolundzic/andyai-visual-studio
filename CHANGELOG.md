@@ -10,3 +10,12 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added local mock adapter for frontend development before live Supabase wiring.
 - Added `/data-preview` route for inspecting product data flow.
 - Added v0.4.0 documentation and verification script.
+
+## v0.5.0 — Live Supabase Client Wiring
+
+- Added `.env.example` for mock and live Supabase modes.
+- Added Supabase browser/server client helpers.
+- Added Supabase adapter for `avs_templates`.
+- Added adapter switch with safe fallback to local mock data.
+- Wired Gallery, Template Detail, TAP Editor, and Data Preview routes to the data adapter.
+- Added v0.5.0 documentation and verifier.

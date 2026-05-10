@@ -1,18 +1,24 @@
-import { Footer } from "@/components/Footer";
-import { Nav } from "@/components/Nav";
-import { TemplateGallery } from "@/components/TemplateGallery";
+import TemplateGallery from "@/components/TemplateGallery";
+import { listTemplatesWithSource } from "@/lib/data";
 
-export default function GalleryPage() {
+export default async function GalleryPage() {
+  const { templates, status } = await listTemplatesWithSource();
+
   return (
-    <main>
-      <Nav />
-      <section className="section shell">
-        <span className="kicker">Gallery Shell</span>
-        <h1>Browse templates by ID, keyword, category, and use case.</h1>
-        <p className="hero-text">This is the first commercial gallery layer for AndyAI Visual Studio. It starts with seed templates and is ready for Supabase-backed catalog expansion.</p>
-        <TemplateGallery />
+    <main className="avs-page">
+      <section className="avs-hero compact">
+        <p className="avs-kicker">Live data-ready gallery</p>
+        <h1>Visual Template Gallery</h1>
+        <p>
+          Browse reusable AndyAI visual templates. The gallery now reads through the product data adapter and can switch from local mock data to live Supabase.
+        </p>
+        <div className="avs-status-card">
+          <strong>Data source:</strong> {status.source} · <strong>Mode:</strong> {status.requestedMode} · <strong>Fallback:</strong> {status.fallbackUsed ? "yes" : "no"}
+          <p>{status.message}</p>
+        </div>
       </section>
-      <Footer />
+
+      <TemplateGallery templates={templates} />
     </main>
   );
 }

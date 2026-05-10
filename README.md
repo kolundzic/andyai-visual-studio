@@ -109,3 +109,7 @@ AndyAI Visual Studio now includes its first product data foundation:
 Canonical rule:
 
 > Template is reusable. Project is personal. Export is evidence/output.
+
+## v0.5.0 — Live Supabase Client Wiring
+
+v0.5.0 connects AndyAI Visual Studio to a live Supabase-ready product data layer while keeping safe local mock fallback behavior. Gallery, template detail, TAP Editor, and data preview routes now read through one adapter boundary.
