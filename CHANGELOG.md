@@ -371,3 +371,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.8.0 — Multi-Project Visual Library
 
 - Added multi-project visual library route, component, lib, and documentation.
+
+## v6.9.0 — Ecosystem QA + Cross-Linking
+
+- Added ecosystem QA, cross-linking route, route checks, and docs.
