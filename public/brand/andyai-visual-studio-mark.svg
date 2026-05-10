@@ -1,0 +1,10 @@
+<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="220" rx="36" fill="#0B0D12"/>
+  <rect x="28" y="28" width="164" height="164" rx="28" fill="#151A24" stroke="#E7B85A" stroke-width="3"/>
+  <path d="M77 145L110 70L143 145" stroke="#E7B85A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M91 119H129" stroke="#E7B85A" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="178" cy="44" r="10" fill="#E34234"/>
+  <text x="222" y="92" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="700">AndyAI Visual Studio</text>
+  <text x="224" y="137" fill="#C8CDD8" font-family="Arial, Helvetica, sans-serif" font-size="22">Reusable AI visual templates → editable workflows</text>
+  <text x="224" y="173" fill="#E7B85A" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700">TEMPLATE • ADAPTATION • PRODUCTION</text>
+</svg>

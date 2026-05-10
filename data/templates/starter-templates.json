@@ -1,0 +1,35 @@
+[
+  {
+    "template_code": "AVTS-001",
+    "slug": "academic-sci-fi-hero-visual",
+    "title": "Academic Sci-Fi Hero Visual",
+    "category": "Academic Sci-Fi Visuals",
+    "description": "A premium hero-style visual for explaining a serious AI or technology concept with clean academic sci-fi energy.",
+    "difficulty": "beginner",
+    "output_type": "image_prompt",
+    "style_family": "academic-sci-fi",
+    "tags": ["hero", "ai", "academic", "sci-fi", "landing"]
+  },
+  {
+    "template_code": "AVTS-002",
+    "slug": "agent-system-map",
+    "title": "Agent System Map",
+    "category": "Agent System Maps",
+    "description": "A structured diagram prompt for showing agents, tools, memory, approvals, and evidence flow.",
+    "difficulty": "intermediate",
+    "output_type": "diagram_prompt",
+    "style_family": "technical-architecture",
+    "tags": ["agent", "diagram", "workflow", "governance", "memory"]
+  },
+  {
+    "template_code": "AVTS-003",
+    "slug": "evidence-card-layout",
+    "title": "Evidence Card Layout",
+    "category": "Evidence Cards",
+    "description": "A reusable card visual for claims, proof, source status, risk, and next action.",
+    "difficulty": "beginner",
+    "output_type": "layout_prompt",
+    "style_family": "editorial-dashboard",
+    "tags": ["evidence", "card", "trust", "audit", "proof"]
+  }
+]

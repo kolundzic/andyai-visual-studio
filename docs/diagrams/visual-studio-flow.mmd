@@ -1,0 +1,12 @@
+flowchart LR
+  A[Hero Page] --> B[Gallery]
+  B --> C[Template Detail]
+  C --> D[TAP Editor]
+  D --> E[Prompt Export]
+  D --> F[JSON Workflow Export]
+  D --> G[Notion-ready Export]
+  E --> H[Dashboard]
+  F --> H
+  G --> H
+  H --> I[Supabase]
+  I --> J[Pricing / Stripe Later]
