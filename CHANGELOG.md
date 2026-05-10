@@ -217,3 +217,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.4.0 — Visual Canon Template Packs
 
 - Added Visual Canon pack model and route for grouped marketplace templates.
+
+## v3.5.0 — Prompt-to-Template Generator Spec
+
+- Added generator specification for transforming raw prompts into reusable templates.
