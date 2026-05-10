@@ -229,3 +229,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.7.0 — Template Rating/Favorite Model
 
 - Added template rating and favorite model with starter Supabase migration.
+
+## v3.8.0 — Admin Template Publishing Flow
+
+- Added admin publishing workflow, publish log migration, and governance route.
