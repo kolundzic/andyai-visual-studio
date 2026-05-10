@@ -174,3 +174,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added pricing architecture model.
 - Added pricing architecture route.
 - Added Stripe-ready monetization docs without live billing risk.
+
+## v2.7.0 — Usage Limits + Plan Gates
+
+- Added plan gate card component.
+- Added usage limits route.
+- Added plan gate documentation.
