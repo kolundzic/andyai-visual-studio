@@ -375,3 +375,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.9.0 — Ecosystem QA + Cross-Linking
 
 - Added ecosystem QA, cross-linking route, route checks, and docs.
+
+## v7.0.0 — AndyAI Visual Ecosystem Lock
+
+- Locked the ecosystem integration layer for AndyAI Visual Studio.

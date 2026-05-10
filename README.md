@@ -234,3 +234,7 @@ AndyAI Visual Studio now has the agency/client delivery foundation:
 - Brand kit profiles
 - Client delivery packages
 - Agency QA
+
+## v7.0.0 — AndyAI Visual Ecosystem Lock
+
+AndyAI Visual Studio now has the canonical bridge to Visual Canon, Visual Factory, Animator Studio, Knowledge Factory, Director, TAPFORGE, repo README visual packs, and multi-project visual libraries.
