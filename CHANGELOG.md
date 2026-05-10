@@ -254,3 +254,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added HTML export route.\n- Added HTML export contract.\n- Added readable working screen sections.
+
+
+- Added README visual pack route.\n- Added README export structure.\n- Added project proof presentation model.
