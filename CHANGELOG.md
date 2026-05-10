@@ -327,3 +327,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Client Delivery Package layer for AndyAI Visual Studio.
 - Added route, component, library contract, documentation, and verification coverage.
 - Preserved TAP-TAP sequential release discipline with local-first proof.
+
+## v5.9.0 — Agency Dashboard QA
+
+- Added Agency Dashboard QA layer for AndyAI Visual Studio.
+- Added route, component, library contract, documentation, and verification coverage.
+- Preserved TAP-TAP sequential release discipline with local-first proof.
