@@ -98,3 +98,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added beta-oriented template catalog structure.
 - Added  route.
 - Added template metadata for categories, audiences, formats, and beta readiness.
+
+## v1.5.0 — Public Launch README + Partner Page
+
+- Added  route.
+- Added public launch positioning to README.
+- Added partner and pilot audience documentation.

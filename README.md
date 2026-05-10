@@ -159,3 +159,19 @@ npm run verify:v1.1.0
 ```text
 /production-smoke
 ```
+
+## v1.5.0 Public Launch Positioning
+
+AndyAI Visual Studio is now positioned as a public MVP for reusable AI visual production workflows.
+
+Primary early audiences:
+
+- founders
+- agencies
+- educators
+- developers/builders
+- product teams
+
+Core public promise:
+
+Template enters → human edits → TAP prompt is saved → artifact is exported → proof remains.
