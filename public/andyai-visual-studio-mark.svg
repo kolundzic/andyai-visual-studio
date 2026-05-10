@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="AndyAI Visual Studio mark">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffdf8a"/>
+      <stop offset="0.5" stop-color="#83b8ff"/>
+      <stop offset="1" stop-color="#ff5b6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="#070812"/>
+  <path d="M110 360 220 112h72l110 248h-76l-18-46H204l-18 46h-76Zm116-104h60l-30-78-30 78Z" fill="url(#g)"/>
+  <circle cx="388" cy="120" r="30" fill="#ffcc66"/>
+</svg>
