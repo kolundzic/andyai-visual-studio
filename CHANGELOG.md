@@ -307,3 +307,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added Approval Gate for Visual Artifacts layer for AndyAI Visual Studio agency/client delivery workflow.
 - Added route, component, library contract, docs, and release trace.
 - Preserved TAP-TAP verification, commit, tag, and push discipline.
+
+
+## v5.6.0 — Agency Project Templates
+
+- Added Agency Project Templates layer for AndyAI Visual Studio agency/client delivery workflow.
+- Added route, component, library contract, docs, and release trace.
+- Preserved TAP-TAP verification, commit, tag, and push discipline.
