@@ -363,3 +363,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v6.6.0 — TAPFORGE Governance Metadata
 
 - Added TAPFORGE governance route, component, lib, and documentation.
+
+## v6.7.0 — AndyAI Repo README Visual Pack Generator
+
+- Added README visual pack generator route, component, lib, and docs.
