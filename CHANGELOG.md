@@ -225,3 +225,7 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 ## v3.6.0 — Template Preview Renderer
 
 - Added template preview renderer route, component, and preview summary model.
+
+## v3.7.0 — Template Rating/Favorite Model
+
+- Added template rating and favorite model with starter Supabase migration.
