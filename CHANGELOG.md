@@ -114,3 +114,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 - Added  route.
 - Added mobile-first QA notes for public beta readiness.
+
+## v1.8.0 — Public Showcase Screenshots + Visual Proof Pack
+
+- Added  route.
+- Added visual proof SVG card.
+- Added visual proof strip component.

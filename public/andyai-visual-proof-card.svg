@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="AndyAI Visual Studio public beta proof card">
+  <rect width="1200" height="630" fill="#0b0b0d"/>
+  <circle cx="1020" cy="120" r="120" fill="#f5c542" opacity="0.92"/>
+  <rect x="80" y="90" width="720" height="450" rx="36" fill="#ffffff"/>
+  <text x="120" y="170" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#111111">AndyAI Visual Studio</text>
+  <text x="120" y="235" font-family="Arial, sans-serif" font-size="58" font-weight="800" fill="#111111">Public SaaS Beta</text>
+  <text x="120" y="305" font-family="Arial, sans-serif" font-size="30" fill="#222222">Template → TAP Editor → Project → Export → Package</text>
+  <text x="120" y="390" font-family="Arial, sans-serif" font-size="24" fill="#444444">MVP locked. Deploy path verified. Visual proof ready.</text>
+  <text x="120" y="470" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#b00020">🅰️💥 TAP-TAP / SEMAFOR</text>
+</svg>
