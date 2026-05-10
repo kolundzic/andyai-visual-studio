@@ -168,3 +168,9 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added versioned exports route.
 - Added Supabase migration for artifact history links.
 - Added export history documentation.
+
+## v2.6.0 — Stripe Pricing Architecture Draft
+
+- Added pricing architecture model.
+- Added pricing architecture route.
+- Added Stripe-ready monetization docs without live billing risk.
