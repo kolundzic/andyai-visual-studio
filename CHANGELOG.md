@@ -260,3 +260,6 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 
 
 - Added diagram pack generator route.\n- Added five-diagram canonical output model.\n- Added diagram generation documentation.
+
+
+- Added artifact bundle route.\n- Added future ZIP manifest.\n- Added handoff package structure.
