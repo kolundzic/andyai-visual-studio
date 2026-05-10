@@ -61,3 +61,14 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added package preview links from project and exports pages.
 - Added Supabase migration for download format and artifact metadata.
 - Added v0.9.0 docs and verifier.
+
+## v1.0.0 — MVP Product Lock
+
+- Polished the public home page for MVP positioning.
+- Added `/demo` public demo route.
+- Added `/status` MVP status route.
+- Added MVP status badge component and public SVG badge.
+- Added product/demo content module.
+- Added route QA script and v1.0.0 verifier.
+- Added public demo readiness, route QA, and Vercel deploy documentation.
+- Added README launch pass block.

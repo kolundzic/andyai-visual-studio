@@ -113,3 +113,24 @@ Canonical rule:
 ## v0.5.0 — Live Supabase Client Wiring
 
 v0.5.0 connects AndyAI Visual Studio to a live Supabase-ready product data layer while keeping safe local mock fallback behavior. Gallery, template detail, TAP Editor, and data preview routes now read through one adapter boundary.
+
+---
+
+## 🅰️💥 v1.0.0 MVP Product Lock & Public Demo Readiness
+
+**Status:** 🟢 MVP locked / public demo ready  
+**Product flow:** Template → TAP Editor → Project → Export → Package → Download  
+**Public demo routes:** `/`, `/demo`, `/status`, `/gallery`, `/tap-editor`, `/data-preview`, `/exports`  
+**Deployment readiness:** Route QA and Vercel checklist included.
+
+### v1.0.0 proof commands
+
+```bash
+npm run verify:v1.0.0
+npm run route:qa
+```
+
+### MVP badge
+
+`public/andyai-visual-studio-mvp-badge.svg`
+
