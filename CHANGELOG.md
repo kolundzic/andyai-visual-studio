@@ -141,3 +141,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added lifecycle fields for templates, projects, and exports.
 - Added indexes for owner/project/export lookup.
 - Added v2.1.0 schema hardening docs and route.
+
+## v2.2.0 — Auth Session UX Polish
+
+- Added auth session explainer component.
+- Added auth polish route.
+- Added auth/session UX documentation.
+- Preserved public demo safety while preparing beta workspace behavior.
