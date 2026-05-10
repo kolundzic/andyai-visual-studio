@@ -1,39 +1,52 @@
-import Link from "next/link";
-import { ProjectWorkspaceShell } from "@/components/ProjectWorkspaceShell";
-import { getCurrentAuthState } from "@/lib/auth/session";
-import { listWorkspaceProjects } from "@/lib/data/user-projects";
-
-export const metadata = {
-  title: "Projects | AndyAI Visual Studio",
-  description: "User-owned visual projects workspace.",
-};
+import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
 export default async function ProjectsPage() {
-  const auth = await getCurrentAuthState();
+  const projects = await withDataFallback(
+    async (adapter) => adapter.listProjects(),
+    async (fallbackAdapter) => fallbackAdapter.listProjects()
+  );
 
-  if (!auth.user) {
-    return (
-      <main className="avs-page">
-        <section className="avs-hero compact">
-          <p className="avs-kicker">Projects require login</p>
-          <h1>User project workspace</h1>
-          <p>Sign in to see projects owned by your Supabase user id.</p>
-          <Link className="avs-button" href="/login">Sign in</Link>
-        </section>
-      </main>
-    );
-  }
-
-  const workspace = await listWorkspaceProjects(auth.user.id);
+  const source = getProductDataAdapter().getSourceState();
 
   return (
-    <main className="avs-page">
-      <section className="avs-hero compact">
-        <p className="avs-kicker">User-owned projects</p>
-        <h1>Projects</h1>
-        <p>Every private project belongs to the authenticated user and is protected by owner checks.</p>
+    <main className="avs-page-shell">
+      <section className="avs-hero-small">
+        <div className="avs-section-kicker">Workspace</div>
+        <h1>User projects</h1>
+        <p>
+          Saved TAP prompts and template-based projects appear here after the user creates them from the TAP Editor.
+        </p>
+        <div className="avs-actions">
+          <a className="avs-button-primary" href="/gallery">
+            Create from template
+          </a>
+          <a className="avs-button-secondary" href="/tap-editor">
+            Open TAP Editor
+          </a>
+        </div>
+        <div className="avs-inline-proof">
+          <span>Projects: {projects.length}</span>
+          <span>Data mode: {source.mode}</span>
+          <span>{source.reason}</span>
+        </div>
       </section>
-      <ProjectWorkspaceShell projects={workspace.projects} source={workspace.source} fallbackUsed={workspace.fallbackUsed} message={workspace.message} />
+
+      <section className="avs-grid avs-grid-3">
+        {projects.map((project) => (
+          <article className="avs-card" key={project.id}>
+            <div className="avs-card-topline">{project.status}</div>
+            <h3>{project.title}</h3>
+            <p>{project.description || "No description yet."}</p>
+            <div className="avs-inline-proof">
+              <span>{project.source}</span>
+              <span>{new Date(project.updatedAt).toLocaleDateString()}</span>
+            </div>
+            <a className="avs-button-secondary" href={`/projects/${project.id}`}>
+              Preview project
+            </a>
+          </article>
+        ))}
+      </section>
     </main>
   );
 }

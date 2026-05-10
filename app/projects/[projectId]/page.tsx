@@ -1,62 +1,69 @@
-import Link from "next/link";
-import { getCurrentAuthState } from "@/lib/auth/session";
-import { getWorkspaceProject } from "@/lib/data/user-projects";
+import { notFound } from "next/navigation";
+import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
 type ProjectDetailPageProps = {
-  params: {
-    projectId: string;
-  };
+  params: Promise<{ projectId: string }> | { projectId: string };
 };
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const auth = await getCurrentAuthState();
-
-  if (!auth.user) {
-    return (
-      <main className="avs-page">
-        <section className="avs-hero compact">
-          <p className="avs-kicker">Protected project</p>
-          <h1>Sign in required</h1>
-          <p>This project detail view requires an authenticated owner.</p>
-          <Link className="avs-button" href="/login">Sign in</Link>
-        </section>
-      </main>
-    );
-  }
-
-  const project = await getWorkspaceProject(auth.user.id, params.projectId);
+  const resolvedParams = await Promise.resolve(params);
+  const project = await withDataFallback(
+    async (adapter) => adapter.getProjectById(resolvedParams.projectId),
+    async (fallbackAdapter) => fallbackAdapter.getProjectById(resolvedParams.projectId)
+  );
 
   if (!project) {
-    return (
-      <main className="avs-page">
-        <section className="avs-hero compact">
-          <p className="avs-kicker">Project not found</p>
-          <h1>No accessible project</h1>
-          <p>The project does not exist in this workspace or does not belong to the current user.</p>
-          <Link className="avs-button" href="/projects">Back to projects</Link>
-        </section>
-      </main>
-    );
+    notFound();
   }
 
+  const source = getProductDataAdapter().getSourceState();
+
   return (
-    <main className="avs-page">
-      <section className="avs-hero compact">
-        <p className="avs-kicker">{project.status}</p>
+    <main className="avs-page-shell">
+      <section className="avs-panel avs-stack">
+        <div className="avs-section-kicker">Project Preview</div>
         <h1>{project.title}</h1>
-        <p>Owner-scoped project detail view for the authenticated user.</p>
-        <div className="avs-button-row">
-          <Link className="avs-button" href="/tap-editor">Open TAP Editor</Link>
-          <Link className="avs-button secondary" href="/projects">Back to projects</Link>
+        <p className="avs-muted">{project.description || "Saved visual project created from a reusable template."}</p>
+
+        <div className="avs-inline-proof">
+          <span>Status: {project.status}</span>
+          <span>Source: {project.source}</span>
+          <span>Updated: {new Date(project.updatedAt).toLocaleString()}</span>
+        </div>
+
+        <div className="avs-actions">
+          <a className="avs-button-primary" href={`/tap-editor?templateId=${project.templateId ?? ""}`}>
+            Create another from template
+          </a>
+          <a className="avs-button-secondary" href="/projects">
+            Back to projects
+          </a>
         </div>
       </section>
-      <section className="avs-section">
-        <h2>User prompt</h2>
-        <pre className="avs-code-block">{project.userPrompt}</pre>
-      </section>
-      <section className="avs-section">
-        <h2>Generated prompt</h2>
-        <pre className="avs-code-block">{project.generatedPrompt}</pre>
+
+      <section className="avs-grid avs-grid-2">
+        <article className="avs-card">
+          <div className="avs-card-topline">Saved TAP prompt</div>
+          <pre className="avs-code-block">{project.tapPrompt}</pre>
+        </article>
+
+        <article className="avs-card">
+          <div className="avs-card-topline">Project data</div>
+          <pre className="avs-code-block">
+            {JSON.stringify(
+              {
+                id: project.id,
+                templateId: project.templateId,
+                status: project.status,
+                inputSnapshot: project.inputSnapshot,
+                outputSnapshot: project.outputSnapshot,
+                dataMode: source.mode
+              },
+              null,
+              2
+            )}
+          </pre>
+        </article>
       </section>
     </main>
   );

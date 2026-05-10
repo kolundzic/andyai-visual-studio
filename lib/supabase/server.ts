@@ -1,43 +1,33 @@
 import { createServerClient } from "@supabase/ssr";
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
-import { getSupabasePublicEnv } from "./env";
+import { getSupabaseAnonKey, getSupabaseUrl } from "./env";
 
-export function createServerSupabaseClient(): SupabaseClient | null {
-  const env = getSupabasePublicEnv();
-
-  if (!env.configured) {
-    return null;
-  }
-
-  return createClient(env.url, env.anonKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-    },
-  });
-}
-
-export async function createServerSupabaseAuthClient() {
-  const env = getSupabasePublicEnv();
-
-  if (!env.configured) {
-    return null;
-  }
-
+export async function createServerSupabaseClient() {
   const cookieStore = await cookies();
 
-  return createServerClient(env.url, env.anonKey, {
+  return createServerClient(getSupabaseUrl(), getSupabaseAnonKey(), {
     cookies: {
       getAll() {
         return cookieStore.getAll();
       },
       setAll(cookiesToSet) {
         try {
-          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+          cookiesToSet.forEach(({ name, value, options }) => {
+            cookieStore.set(name, value, options);
+          });
         } catch {
+          return;
         }
-      },
-    },
+      }
+    }
   });
+}
+
+export async function getCurrentSupabaseUser() {
+  const supabase = await createServerSupabaseClient();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
+
+  return user;
 }

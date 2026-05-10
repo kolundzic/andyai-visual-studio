@@ -1,47 +1,54 @@
-import Link from "next/link";
-import { AuthStatus } from "@/components/AuthStatus";
-import { ProjectWorkspaceShell } from "@/components/ProjectWorkspaceShell";
-import { getCurrentAuthState } from "@/lib/auth/session";
-import { listWorkspaceProjects } from "@/lib/data/user-projects";
-
-export const metadata = {
-  title: "Dashboard | AndyAI Visual Studio",
-  description: "Protected dashboard model for user-owned visual projects.",
-};
+import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
 export default async function DashboardPage() {
-  const auth = await getCurrentAuthState();
+  const [templates, projects] = await Promise.all([
+    withDataFallback(
+      async (adapter) => adapter.listTemplates(),
+      async (fallbackAdapter) => fallbackAdapter.listTemplates()
+    ),
+    withDataFallback(
+      async (adapter) => adapter.listProjects(),
+      async (fallbackAdapter) => fallbackAdapter.listProjects()
+    )
+  ]);
 
-  if (!auth.user) {
-    return (
-      <main className="avs-page">
-        <section className="avs-hero compact">
-          <p className="avs-kicker">Protected dashboard model</p>
-          <h1>Your Visual Studio workspace</h1>
-          <p>
-            The dashboard is now auth-aware. Real private projects require Supabase Auth and owner-scoped RLS.
-          </p>
-          <div className="avs-button-row">
-            <Link className="avs-button" href="/login">Sign in</Link>
-            <Link className="avs-button secondary" href="/gallery">Browse public templates</Link>
-          </div>
-        </section>
-        <AuthStatus auth={auth} />
-      </main>
-    );
-  }
-
-  const workspace = await listWorkspaceProjects(auth.user.id);
+  const source = getProductDataAdapter().getSourceState();
 
   return (
-    <main className="avs-page">
-      <section className="avs-hero compact">
-        <p className="avs-kicker">Protected workspace</p>
-        <h1>Dashboard</h1>
-        <p>Signed-in users see their own projects, backed by project ownership and starter RLS rules.</p>
+    <main className="avs-page-shell">
+      <section className="avs-hero-small">
+        <div className="avs-section-kicker">Dashboard</div>
+        <h1>Visual Studio workspace</h1>
+        <p>
+          Track templates, saved projects, and the current data source mode from one product workspace.
+        </p>
+        <div className="avs-actions">
+          <a className="avs-button-primary" href="/gallery">
+            New project from template
+          </a>
+          <a className="avs-button-secondary" href="/projects">
+            View projects
+          </a>
+        </div>
       </section>
-      <AuthStatus auth={auth} />
-      <ProjectWorkspaceShell projects={workspace.projects} source={workspace.source} fallbackUsed={workspace.fallbackUsed} message={workspace.message} />
+
+      <section className="avs-grid avs-grid-3">
+        <article className="avs-card">
+          <div className="avs-card-topline">Templates</div>
+          <h2>{templates.length}</h2>
+          <p>Published visual templates available for TAP editing.</p>
+        </article>
+        <article className="avs-card">
+          <div className="avs-card-topline">Projects</div>
+          <h2>{projects.length}</h2>
+          <p>User-owned project records available in the workspace.</p>
+        </article>
+        <article className="avs-card">
+          <div className="avs-card-topline">Data source</div>
+          <h2>{source.mode}</h2>
+          <p>{source.reason}</p>
+        </article>
+      </section>
     </main>
   );
 }

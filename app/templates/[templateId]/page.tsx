@@ -1,58 +1,66 @@
-import Link from "next/link";
-import { getTemplateWithSource } from "@/lib/data";
+import { notFound } from "next/navigation";
+import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
 type TemplateDetailPageProps = {
-  params: {
-    templateId: string;
-  };
+  params: Promise<{ templateId: string }> | { templateId: string };
 };
 
 export default async function TemplateDetailPage({ params }: TemplateDetailPageProps) {
-  const { template, status } = await getTemplateWithSource(params.templateId);
+  const resolvedParams = await Promise.resolve(params);
+  const template = await withDataFallback(
+    async (adapter) => adapter.getTemplateById(resolvedParams.templateId),
+    async (fallbackAdapter) => fallbackAdapter.getTemplateById(resolvedParams.templateId)
+  );
 
   if (!template) {
-    return (
-      <main className="avs-page">
-        <section className="avs-hero compact">
-          <p className="avs-kicker">Template not found</p>
-          <h1>No matching template</h1>
-          <p>The requested template does not exist in the current data source.</p>
-          <Link className="avs-button" href="/gallery">Back to gallery</Link>
-        </section>
-      </main>
-    );
+    notFound();
   }
 
+  const source = getProductDataAdapter().getSourceState();
+
   return (
-    <main className="avs-page">
-      <section className="avs-hero compact">
-        <p className="avs-kicker">{template.template_id} · {template.category}</p>
+    <main className="avs-page-shell">
+      <section className="avs-panel avs-stack">
+        <div className="avs-section-kicker">{template.category}</div>
         <h1>{template.title}</h1>
-        <p>{template.summary}</p>
-        <div className="avs-status-card">
-          <strong>Data source:</strong> {status.source} · <strong>Fallback:</strong> {status.fallbackUsed ? "yes" : "no"}
-        </div>
-        <div className="avs-button-row">
-          <Link className="avs-button" href={`/tap-editor?template=${template.template_id}`}>Open in TAP Editor</Link>
-          <Link className="avs-button secondary" href="/gallery">Back to gallery</Link>
-        </div>
-      </section>
+        <p className="avs-muted">{template.description}</p>
 
-      <section className="avs-section">
-        <h2>Base prompt</h2>
-        <pre className="avs-code-block">{template.prompt}</pre>
-      </section>
-
-      <section className="avs-section">
-        <h2>Workflow steps</h2>
-        <div className="avs-card-grid small">
-          {template.workflow_steps.map((step, index) => (
-            <article className="avs-card" key={step}>
-              <div className="avs-card-meta">Step {index + 1}</div>
-              <p>{step}</p>
-            </article>
+        <div className="avs-tag-row">
+          {template.tags.map((tag) => (
+            <span className="avs-tag" key={tag}>
+              {tag}
+            </span>
           ))}
         </div>
+
+        <div className="avs-actions">
+          <a className="avs-button-primary" href={`/tap-editor?templateId=${template.id}`}>
+            Open in TAP Editor
+          </a>
+          <a className="avs-button-secondary" href="/gallery">
+            Back to gallery
+          </a>
+        </div>
+      </section>
+
+      <section className="avs-grid avs-grid-2">
+        <article className="avs-card">
+          <div className="avs-card-topline">Default TAP prompt</div>
+          <pre className="avs-code-block">{template.tapPrompt}</pre>
+        </article>
+
+        <article className="avs-card">
+          <div className="avs-card-topline">Workflow</div>
+          <ol className="avs-ordered-list">
+            {template.workflow.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <div className="avs-inline-proof">
+            <span>Data mode: {source.mode}</span>
+            <span>{source.reason}</span>
+          </div>
+        </article>
       </section>
     </main>
   );

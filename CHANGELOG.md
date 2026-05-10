@@ -29,3 +29,13 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added owner-scoped workspace project adapter.
 - Added starter RLS migration for project and export ownership.
 - Added auth and workspace documentation.
+
+## v0.7.0 — Template Save & Project Creation Flow
+
+- Added create-project-from-template flow.
+- Added editable TAP prompt save form.
+- Added project detail preview route.
+- Added workspace project list refresh model.
+- Added local mock and Supabase adapter methods for project creation.
+- Added project prompt snapshot migration.
+- Added v0.7.0 docs and verifier.

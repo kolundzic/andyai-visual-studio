@@ -1,40 +1,44 @@
-import { listTemplatesWithSource } from "@/lib/data";
+import { getProductDataAdapter, withDataFallback } from "@/lib/data";
 
 export default async function DataPreviewPage() {
-  const { templates, status } = await listTemplatesWithSource();
+  const adapter = getProductDataAdapter();
+  const source = adapter.getSourceState();
+
+  const [templates, projects] = await Promise.all([
+    withDataFallback(
+      async (activeAdapter) => activeAdapter.listTemplates(),
+      async (fallbackAdapter) => fallbackAdapter.listTemplates()
+    ),
+    withDataFallback(
+      async (activeAdapter) => activeAdapter.listProjects(),
+      async (fallbackAdapter) => fallbackAdapter.listProjects()
+    )
+  ]);
 
   return (
-    <main className="avs-page">
-      <section className="avs-hero compact">
-        <p className="avs-kicker">v0.5.0 Data Preview</p>
-        <h1>Live Supabase Client Wiring</h1>
+    <main className="avs-page-shell">
+      <section className="avs-hero-small">
+        <div className="avs-section-kicker">Data Preview</div>
+        <h1>Live adapter and workspace data preview</h1>
         <p>
-          This page verifies that the product data layer can switch between local mock data and live Supabase reads.
+          Inspect whether AndyAI Visual Studio is reading from live Supabase or from the local fallback adapter.
         </p>
-        <div className="avs-status-card">
-          <strong>Requested mode:</strong> {status.requestedMode}<br />
-          <strong>Active source:</strong> {status.source}<br />
-          <strong>Supabase configured:</strong> {status.supabaseConfigured ? "yes" : "no"}<br />
-          <strong>Fallback used:</strong> {status.fallbackUsed ? "yes" : "no"}
-          <p>{status.message}</p>
+        <div className="avs-inline-proof">
+          <span>Mode: {source.mode}</span>
+          <span>Fallback: {source.fallback ? "yes" : "no"}</span>
+          <span>{source.reason}</span>
         </div>
       </section>
 
-      <section className="avs-section">
-        <h2>Templates returned by adapter</h2>
-        <div className="avs-card-grid">
-          {templates.map((template) => (
-            <article className="avs-card" key={template.template_id}>
-              <div className="avs-card-meta">
-                <span>{template.template_id}</span>
-                <span>{template.tier}</span>
-              </div>
-              <h3>{template.title}</h3>
-              <p>{template.summary}</p>
-              <pre className="avs-code-block compact">{JSON.stringify(template, null, 2)}</pre>
-            </article>
-          ))}
-        </div>
+      <section className="avs-grid avs-grid-2">
+        <article className="avs-card">
+          <div className="avs-card-topline">Templates</div>
+          <pre className="avs-code-block">{JSON.stringify(templates, null, 2)}</pre>
+        </article>
+        <article className="avs-card">
+          <div className="avs-card-topline">Projects</div>
+          <pre className="avs-code-block">{JSON.stringify(projects, null, 2)}</pre>
+        </article>
       </section>
     </main>
   );

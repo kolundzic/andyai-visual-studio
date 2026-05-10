@@ -1,19 +1,101 @@
-import { mockTemplates } from "./mock-data";
-import type { ProductDataAdapter } from "./types";
+import { avsProjects, avsTemplates } from "./mock-data";
+import type {
+  AvsDataSourceState,
+  AvsExport,
+  AvsProductDataAdapter,
+  AvsProject,
+  AvsProjectCreateInput,
+  AvsProjectUpdateInput,
+  AvsTemplate
+} from "./types";
 
-export const localMockAdapter: ProductDataAdapter = {
-  async listTemplates() {
-    return mockTemplates;
-  },
+const localProjects: AvsProject[] = [...avsProjects];
 
-  async getTemplate(templateIdOrSlug: string) {
-    return (
-      mockTemplates.find(
-        (template) =>
-          template.id === templateIdOrSlug ||
-          template.template_id === templateIdOrSlug ||
-          template.slug === templateIdOrSlug,
-      ) ?? null
-    );
-  },
-};
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function makeProjectId() {
+  return `local-project-${Date.now()}`;
+}
+
+export function createLocalMockAdapter(reason = "Local mock adapter active"): AvsProductDataAdapter {
+  return {
+    getSourceState(): AvsDataSourceState {
+      return {
+        mode: "local-mock",
+        fallback: true,
+        reason
+      };
+    },
+
+    async listTemplates(): Promise<AvsTemplate[]> {
+      return avsTemplates.filter((template) => template.status === "published");
+    },
+
+    async getTemplateById(templateId: string): Promise<AvsTemplate | null> {
+      return avsTemplates.find((template) => template.id === templateId || template.slug === templateId) ?? null;
+    },
+
+    async listProjects(ownerId = "local-user"): Promise<AvsProject[]> {
+      return localProjects
+        .filter((project) => project.ownerId === ownerId || ownerId === "local-user")
+        .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    },
+
+    async getProjectById(projectId: string, ownerId = "local-user"): Promise<AvsProject | null> {
+      return localProjects.find((project) => project.id === projectId && (project.ownerId === ownerId || ownerId === "local-user")) ?? null;
+    },
+
+    async createProjectFromTemplate(input: AvsProjectCreateInput): Promise<AvsProject> {
+      const template = avsTemplates.find((item) => item.id === input.templateId || item.slug === input.templateId) ?? null;
+      const timestamp = nowIso();
+      const project: AvsProject = {
+        id: makeProjectId(),
+        ownerId: input.ownerId ?? "local-user",
+        templateId: template?.id ?? input.templateId,
+        title: input.title || template?.title || "Untitled Visual Project",
+        description: input.description ?? template?.description ?? "",
+        tapPrompt: input.tapPrompt || template?.tapPrompt || "",
+        status: "draft",
+        source: "local-mock",
+        inputSnapshot: {
+          template,
+          ...(input.inputSnapshot ?? {})
+        },
+        outputSnapshot: {
+          preview: "Saved locally. Connect Supabase for persistent workspace storage."
+        },
+        createdAt: timestamp,
+        updatedAt: timestamp
+      };
+
+      localProjects.unshift(project);
+      return project;
+    },
+
+    async updateProject(input: AvsProjectUpdateInput): Promise<AvsProject | null> {
+      const index = localProjects.findIndex((project) => project.id === input.projectId);
+      if (index === -1) {
+        return null;
+      }
+
+      const updated: AvsProject = {
+        ...localProjects[index],
+        title: input.title ?? localProjects[index].title,
+        description: input.description ?? localProjects[index].description,
+        tapPrompt: input.tapPrompt ?? localProjects[index].tapPrompt,
+        status: input.status ?? localProjects[index].status,
+        outputSnapshot: input.outputSnapshot ?? localProjects[index].outputSnapshot,
+        updatedAt: nowIso()
+      };
+
+      localProjects[index] = updated;
+      return updated;
+    },
+
+    async listExports(): Promise<AvsExport[]> {
+      return [];
+    }
+  };
+}
