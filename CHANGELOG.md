@@ -134,3 +134,10 @@ All notable changes to AndyAI Visual Studio will be documented in this file.
 - Added full master sequence documentation for v1.2.0 → v2.0.0.
 - Added v2.0.0 route QA and verifier scripts.
 - Locked the public beta foundation after the v1.x stabilization series.
+
+## v2.1.0 — Supabase Production Schema Hardening
+
+- Added production schema hardening migration.
+- Added lifecycle fields for templates, projects, and exports.
+- Added indexes for owner/project/export lookup.
+- Added v2.1.0 schema hardening docs and route.
